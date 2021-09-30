@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.11.8
+# v0.16.1
 
 using Markdown
 using InteractiveUtils
@@ -13,13 +13,35 @@ macro bind(def, element)
     end
 end
 
+# ╔═╡ 851c03a4-e7a4-11ea-1652-d59b7a6599f0
+# setting up an empty package environment
+begin
+	import Pkg
+	Pkg.activate(mktempdir())
+	Pkg.Registry.update()
+end
+
+# ╔═╡ d6ee91ea-e750-11ea-1260-31ebf3ec6a9b
+# add (ie install) a package to our environment
+begin
+	Pkg.add("Compose")
+	# call `using` so that we can use it in our code
+	using Compose
+end
+
+# ╔═╡ 5acd58e0-e856-11ea-2d3d-8329889fe16f
+begin
+	Pkg.add("PlutoUI")
+	using PlutoUI
+end
+
 # ╔═╡ fafae38e-e852-11ea-1208-732b4744e4c2
 md"_homework 0, version 2_"
 
 # ╔═╡ 7308bc54-e6cd-11ea-0eab-83f7535edf25
 # edit the code below to set your name and kerberos ID (i.e. email without @mit.edu)
 
-student = (name = "Jazzy Doe", kerberos_id = "jazz")
+student = (name = "Pratik Barve", kerberos_id = "starboi")
 
 # press the ▶ button in the bottom right of this cell to run your edits
 # or use Shift+Enter
@@ -155,28 +177,6 @@ md"To draw Sierpinski's triangle, we are going to use an external package, [_Com
 
 A package contains a coherent set of functionality that you can often use a black box according to its specification. There are [lots of Julia packages](https://juliahub.com/ui/Home).
 "
-
-# ╔═╡ 851c03a4-e7a4-11ea-1652-d59b7a6599f0
-# setting up an empty package environment
-begin
-	import Pkg
-	Pkg.activate(mktempdir())
-	Pkg.Registry.update()
-end
-
-# ╔═╡ d6ee91ea-e750-11ea-1260-31ebf3ec6a9b
-# add (ie install) a package to our environment
-begin
-	Pkg.add("Compose")
-	# call `using` so that we can use it in our code
-	using Compose
-end
-
-# ╔═╡ 5acd58e0-e856-11ea-2d3d-8329889fe16f
-begin
-	Pkg.add("PlutoUI")
-	using PlutoUI
-end
 
 # ╔═╡ dbc4da6a-e7b4-11ea-3b70-6f2abfcab992
 md"Just like the definition above, our `sierpinksi` function is _recursive_: it calls itself."
